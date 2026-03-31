@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import { supabase } from "@/lib/supabase";
 
 export default function GatePage() {
   const [, setLocation] = useLocation();
@@ -27,15 +28,17 @@ export default function GatePage() {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase() }),
-      });
+      const { error: sbError } = await supabase
+        .from("leads")
+        .insert({ name: name.trim(), email: email.trim().toLowerCase() });
 
-      if (!res.ok && res.status !== 201) {
-        const body = await res.json().catch(() => ({}));
-        setError(body.error || "Something went wrong. Please try again.");
+      if (sbError) {
+        if (sbError.code === "23505") {
+          // Duplicate email — still redirect, they're already in the system
+          setLocation("/systems");
+          return;
+        }
+        setError("Something went wrong. Please try again.");
         setLoading(false);
         return;
       }
