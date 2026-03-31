@@ -1,0 +1,96 @@
+Here's your complete prompt to paste directly into Replit AI:
+
+---
+
+**PROMPT:**
+
+Build me a personal brand landing page for **Shaan Soni** (@shaaann.soni on Instagram). This is a lead generation + systems delivery page. Here is everything you need:
+
+---
+
+**PURPOSE**
+The page has two states:
+1. **Gate page** — visitor lands, sees the brand, fills in their name and email to get access
+2. **Systems page** — after submitting the form, they're taken to a page where all my systems and frameworks are displayed
+
+---
+
+**FLOW**
+- User lands on the page
+- They see a headline, subheadline, and a lead capture form (Name + Email fields + CTA button)
+- On submit, store the name and email (use a simple Supabase table called `leads` with columns: `id`, `name`, `email`, `created_at`) and redirect them to `/systems` page
+- The `/systems` page shows cards of my uploaded frameworks/systems (start with 3 placeholder cards I can later replace)
+- Each card has a title, short description, and a download or view button
+
+---
+
+**DESIGN & THEME**
+- Background: near black `#0A0A0A`
+- Primary accent: gold `#C9A84C`
+- Text: off-white `#F5F2ED`
+- Secondary text: `#AAAAAA`
+- Font: Use `Inter` from Google Fonts
+- Cards background: `#1A1A1A` with a subtle gold left border
+- Buttons: solid gold background `#C9A84C` with black text, slight border-radius, hover darkens to `#A8892E`
+- No gradients. No neon. Clean, dark, expensive-looking
+- Mobile responsive
+
+---
+
+**GATE PAGE CONTENT**
+
+Top: Small tag line — `@shaaann.soni`
+
+Headline (large, bold):
+`The Systems Behind The Build.`
+
+Subheadline:
+`Frameworks, mental models, and content systems I use to build a personal brand, a clothing brand, and an AI app — simultaneously, at 19. Enter your details to get access.`
+
+Form fields:
+- Full Name (placeholder: "Your name")
+- Email (placeholder: "Your email")
+- Button text: `Get Access →`
+
+Below form, small text:
+`No spam. Just systems.`
+
+---
+
+**SYSTEMS PAGE CONTENT**
+
+Header: `Here Are The Systems.`
+Subheader: `Everything I use to build, create, and grow — documented.`
+
+3 placeholder system cards:
+1. **Short Form Content Framework** — "How I think about hooks, authority, and audience when creating reels."
+2. **Personal Brand OS** — "The identity, audience, and content system behind @shaaann.soni."
+3. **Builder's Daily System** — "The discipline and execution framework I run every single day."
+
+Each card has: Title, Description, and a button that says `View System →` (link to `#` for now)
+
+---
+
+**TECH STACK**
+- Frontend: Plain HTML, CSS, vanilla JavaScript (single file preferred)
+- Backend / DB: Supabase for storing leads
+- Environment variables needed: `SUPABASE_URL` and `SUPABASE_ANON_KEY`
+- On form submit: insert `{name, email}` into Supabase `leads` table, then redirect to `/systems`
+- Add basic validation: both fields required, valid email format
+
+---
+
+**EXTRAS**
+- Add a subtle gold horizontal line under the header on both pages
+- The gate page should have a very faint grid or noise texture on the background (CSS only, no image)
+- No navbar needed
+- Footer on both pages: `© 2026 Shaan Soni · @shaaann.soni` in small grey text
+
+---
+
+**That's the full prompt.** Once Replit builds it, two things to do immediately:
+
+1. Create the `leads` table in your Supabase project with: `id (uuid)`, `name (text)`, `email (text)`, `created_at (timestamp default now())`
+2. Drop in your actual `SUPABASE_URL` and `SUPABASE_ANON_KEY` from your Supabase project settings
+
+When your systems are ready to upload, just replace the placeholder card links with the actual PDF links or Notion pages. Clean, simple, yours.
