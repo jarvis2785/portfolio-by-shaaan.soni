@@ -1,28 +1,18 @@
+import { useLocation } from "wouter";
+
 const systems = [
   {
     id: 1,
-    title: "Short Form Content Framework",
+    title: "Content Psychology Framework",
     description:
       "How I think about hooks, authority, and audience when creating reels.",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Personal Brand OS",
-    description:
-      "The identity, audience, and content system behind @shaaann.soni.",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Builder's Daily System",
-    description:
-      "The discipline and execution framework I run every single day.",
-    link: "#",
+    route: "/system/content-psychology",
   },
 ];
 
 export default function SystemsPage() {
+  const [, setLocation] = useLocation();
+
   return (
     <div style={{ backgroundColor: "#0A0A0A", minHeight: "100vh" }}>
       <div
@@ -71,10 +61,8 @@ export default function SystemsPage() {
                 className="rounded-md p-6 transition-all"
                 style={{
                   backgroundColor: "#1A1A1A",
-                  borderLeft: "3px solid #C9A84C",
                   border: "1px solid #1F1F1F",
-                  borderLeftColor: "#C9A84C",
-                  borderLeftWidth: "3px",
+                  borderLeft: "3px solid #C9A84C",
                 }}
               >
                 <h2
@@ -91,25 +79,26 @@ export default function SystemsPage() {
                 >
                   {system.description}
                 </p>
-                <a
-                  href={system.link}
-                  data-testid={`link-system-${system.id}`}
+                <button
+                  onClick={() => setLocation(system.route)}
+                  data-testid={`btn-view-system-${system.id}`}
                   className="inline-block px-4 py-2 text-xs font-semibold rounded-md transition-all"
                   style={{
                     backgroundColor: "#C9A84C",
                     color: "#0A0A0A",
-                    textDecoration: "none",
+                    border: "none",
+                    cursor: "pointer",
                     letterSpacing: "0.01em",
                   }}
                   onMouseEnter={(e) => {
-                    (e.target as HTMLAnchorElement).style.backgroundColor = "#A8892E";
+                    (e.currentTarget).style.backgroundColor = "#A8892E";
                   }}
                   onMouseLeave={(e) => {
-                    (e.target as HTMLAnchorElement).style.backgroundColor = "#C9A84C";
+                    (e.currentTarget).style.backgroundColor = "#C9A84C";
                   }}
                 >
                   View System →
-                </a>
+                </button>
               </div>
             ))}
           </div>

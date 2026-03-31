@@ -2,6 +2,7 @@ import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import GatePage from "@/pages/gate";
 import SystemsPage from "@/pages/systems";
+import PdfViewerPage from "@/pages/pdf-viewer";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -11,6 +12,7 @@ function Router() {
     <Switch>
       <Route path="/" component={GatePage} />
       <Route path="/systems" component={SystemsPage} />
+      <Route path="/system/content-psychology" component={PdfViewerPage} />
       <Route component={NotFound} />
     </Switch>
   );
